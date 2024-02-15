@@ -1,0 +1,194 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body{
+	height: 100vh;
+	width: 100%;
+	background: linear-gradient(
+	90deg, rgba(0,212,255,1)0%, rgba(65, 185, 131,1)100%);
+}
+
+
+.board{
+	display: grid;
+	height: 95%;
+	width: 100%;
+	display: grid;
+	justify-content: center;
+	align-content: center;
+	justify-items: center;
+	align-items: center;
+	grid-template-columns: repeat(3, auto);
+}
+.board-noshow{
+	display: none;
+}
+
+/*Mostar qual será o jogador (X ou O)*/
+.board.x .cell:not(.x):not(.o):hover::before,
+.board.x .cell:not(.x):not(.o):hover::after,
+.board.o .cell:not(.x):not(.o):hover::before,
+.board.o .cell:not(.x):not(.o):hover::after{
+	background: rgba(255,255,255,0.3) !important;
+}
+
+
+
+.cell{
+	height: 100px;
+	width: 100px;
+	border: 2px solid white;
+	display: flex;
+	justify-content: center;
+	align-items: center;	
+	position: relative;
+}
+
+/*Campo já escolhido*/
+.cell.x,
+.cell.o{
+	cursor: not-allowed;
+}
+
+
+.cell:nth-child(1),
+.cell:nth-child(2),
+.cell:nth-child(3){
+	border-top:none;
+}
+
+.cell:nth-child(1),
+.cell:nth-child(4),
+.cell:nth-child(7){
+	border-left:none;
+}
+
+.cell:nth-child(7),
+.cell:nth-child(8),
+.cell:nth-child(9){
+	border-bottom:none;
+}
+
+.cell:nth-child(3),
+.cell:nth-child(6),
+.cell:nth-child(9){
+	border-right:none;
+}
+
+/* X */
+.cell.x::before,
+.cell.x::after,
+.board.x .cell:not(.x):not(.o):hover::before,
+.board.x .cell:not(.x):not(.o):hover::after{
+	content: "";
+	height: calc(100px * 0.15);
+	width: calc(100px * 0.9);
+	background: white;
+	position: absolute;
+}
+
+.cell.x::before,
+.board.x .cell:not(.x):not(.o):hover::before{
+	transform: rotate(45deg);
+}
+.cell.x::after,
+.board.x .cell:not(.x):not(.o):hover::after{
+	transform: rotate(-45deg);
+}
+
+/* O */
+.cell.o::before,
+.cell.o::after,
+.board.o .cell:not(.x):not(.o):hover::before,
+.board.o .cell:not(.x):not(.o):hover::after{
+	content: "";
+	height: calc(100px * 0.9);
+	width: calc(100px * 0.9);
+	background: white;
+	position: absolute;
+	border-radius: 50%
+}
+
+
+/* Mensagem */
+.message{
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	justify-content: center;
+	align-items: center;
+	background-color: rgba(0,0,0, 0.8);
+	flex-direction: column;
+}
+
+.message-button{
+	font-size: 2.5rem;
+	background-color: rgba(0,212,255,1);
+	padding: 10px 15px;
+	cursor: pointer;
+	border-radius: 5px;
+	border: none;
+	margin-top: 16px;
+	color: white;
+}
+
+.message-button:hover{
+	color: rgba(0,212,255,1);
+	background-color: white;
+}
+
+.message-text{
+	color: white;
+	font-size: 5rem;
+}
+
+.start{
+	display: flex;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	justify-content: center;
+	align-items: center;
+	background-color: rgba(0,0,0, 0.8);
+	flex-direction: column;
+}
+
+.start-button{
+	font-size: 2.5rem;
+	background-color: rgba(0,212,255,1);
+	padding: 10px 15px;
+	cursor: pointer;
+	border-radius: 5px;
+	border: none;
+	margin-top: 16px;
+	color: white;
+
+}
+
+.start-button:hover{
+	color: rgba(0,212,255,1);
+	background-color: white;
+}
+
+.start-text{
+	color: white;
+	font-size: 5rem;
+	
+}
+	
+.show-message{
+	display: flex;
+}
+
+.start-disabled{
+    display: none;
+   
+}
